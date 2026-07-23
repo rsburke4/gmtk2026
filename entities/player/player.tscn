@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://rt54qedwhr7j"]
+
+[ext_resource type="Texture2D" uid="uid://cql0l8yucnjyp" path="res://assets/sprites/jimothy.png" id="1_symyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
+atlas = ExtResource("1_symyc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sglur"]
+atlas = ExtResource("1_symyc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_071fx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abrql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sglur")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[node name="Player" type="Node2D" unique_id=511396896]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=253131717]
+sprite_frames = SubResource("SpriteFrames_071fx")
+animation = &"walk"
+frame = 1
+frame_progress = 0.7926798
