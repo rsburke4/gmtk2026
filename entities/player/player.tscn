@@ -30,4 +30,4 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_071fx")
 animation = &"walk"
 frame = 1
-frame_progress = 0.7926798
+frame_progress = 0.41517475
