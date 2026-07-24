@@ -1,0 +1,67 @@
+extends CharacterBody2D
+@onready var rigid_body_2d: RigidBody2D = $RigidBody2D
+# How fast the player moves in meters per second.
+@export var speed = 14
+# The downward acceleration when in the air, in meters per second squared.
+@export var fall_acceleration = 75
+const SPEED = 64.0
+const TURN_SPEED = 2
+const ROTATE_SPEED = 20
+
+var direction: Vector2 = Vector2.RIGHT
+var speed_modifier := 1.0
+var has_control = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func _physics_process(delta):
+	if !has_control:
+		return
+	var input_direction := Input.get_vector("move_left","move_right","move_up","move_down")
+	var drive_input := Input.get_axis("move_up","move_down")
+	var turn_input	:= Input.get_axis("move_left","move_right")
+	if turn_input != 0:
+		# Rotate direction based on input vector and apply turn speed
+		direction = direction.rotated(turn_input * (PI/2) * TURN_SPEED * delta)
+		rotation = direction.angle()
+	if drive_input != 0:
+		# Rotate direction based on input vector and apply turn speed
+		direction = direction.rotated(drive_input * (PI/2) * TURN_SPEED * delta)
+		rotation = direction.angle()
+	if input_direction.length() != 0:
+		#move in a forward/backward motion and play animation
+		#animation_player.play("move")
+		#particle_gradient = World.get_gradient_at(position)
+		#speed_modifier = World.get_custom_data_at(position, "speed_modifier")
+		var move_speed = SPEED * speed_modifier
+		velocity = lerp(velocity, (input_direction.normalized() * input_direction.length()) * move_speed, SPEED * delta)
+		#if !audio_player.playing:
+			#audio_player.play()
+	else:
+		# Bring to a stop
+		#if audio_player.playing:
+			#audio_player.stop()
+		velocity = Vector2.ZERO
+		#animation_player.play('idle')
+
+	#if particle_gradient and velocity:
+		#left_track_particles.process_material.color_ramp = particle_gradient
+		#right_track_particles.process_material.color_ramp = particle_gradient
+		#left_track_particles.emitting = true
+		#right_track_particles.emitting = true
+	#else:
+		#left_track_particles.emitting = false
+		#right_track_particles.emitting = false
+
+	# Apply movement velocity
+	move_and_slide()
+
+	# Apply Weapon Rotation
+	#update_weapon_rotation(delta)
