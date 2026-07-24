@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cown2rwperj6e"]
+
+[ext_resource type="Texture2D" uid="uid://dcyrntjqbi1dr" path="res://assets/sprites/ship_red.png" id="1_bipar"]
+[ext_resource type="Script" uid="uid://e0a4buibps2k" path="res://scripts/space_ship.gd" id="1_myu2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bipar"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gyjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bipar")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpaceShip" type="Area2D" unique_id=1623135886]
+script = ExtResource("1_myu2c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960286785]
+shape = SubResource("RectangleShape2D_bipar")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1744985974]
+sprite_frames = SubResource("SpriteFrames_0gyjj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
