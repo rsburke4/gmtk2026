@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bcax1sgr1exje" path="res://scripts/titleScreen/titleScreen.gd" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://cu0qkdn6ubis5" path="res://scripts/titleScreen/settingsScreen.gd" id="1_sa3yf"]
-[ext_resource type="AudioStream" uid="uid://dgqxsfmpvqnop" path="res://assets/music/Scatman John - Scatman's World (with lyrics).mp3" id="3_mgrm8"]
-[ext_resource type="AudioStream" uid="uid://dea3kcj5bvvqy" path="res://assets/music/Trance - 009 Sound System Dreamscape (HD).mp3" id="4_dc4i4"]
 
 [node name="Control" type="Control" unique_id=735362885]
 layout_mode = 3
@@ -118,14 +116,10 @@ text = "Quit
 "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1413802810]
-stream = ExtResource("3_mgrm8")
 autoplay = true
-bus = &"Music"
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=850996895]
-stream = ExtResource("4_dc4i4")
 autoplay = true
-bus = &"SFX"
 
 [connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="Settings/VBoxContainer/MusicSlider" to="Settings" method="_on_music_slider_drag_ended"]
