@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dv21hgsr28wty"]
+
+[node name="Control" type="Control" unique_id=735362885]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="Control" parent="." unique_id=204402202]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=2008234221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="Settings/VBoxContainer" unique_id=1271947919]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="MusicLabel" type="Label" parent="Settings/VBoxContainer" unique_id=425295615]
+layout_mode = 2
+text = "Music Audio"
+
+[node name="MusicSlider" type="HSlider" parent="Settings/VBoxContainer" unique_id=559901052]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="Settings/VBoxContainer" unique_id=53768361]
+layout_mode = 2
+text = "SFX Audio"
+
+[node name="SFXSlider" type="HSlider" parent="Settings/VBoxContainer" unique_id=1260616376]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Settings/VBoxContainer" unique_id=1697223576]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Title" type="Control" parent="." unique_id=1597446114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Title" unique_id=599644473]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -78.5
+offset_right = 78.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Racoon Space Game"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=1677950290]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.7
+offset_left = -35.0
+offset_top = -50.5
+offset_right = 35.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="Title/VBoxContainer" unique_id=949297622]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play
+"
+
+[node name="SettingsButton" type="Button" parent="Title/VBoxContainer" unique_id=64309092]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Title/VBoxContainer" unique_id=1563915939]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit
+"
