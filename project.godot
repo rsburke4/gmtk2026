@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="gmtk2026/"
-run/main_scene="uid://dj4uuop044ioa"
+run/main_scene="uid://dv21hgsr28wty"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*uid://cgm7gm1kjjdy6"
 
 [display]
 

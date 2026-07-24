@@ -28,4 +28,5 @@ func _on_settings_button_button_up() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
 	settingsScreen.process_mode = Node.PROCESS_MODE_ALWAYS
+	settingsScreen.visible = true
 	
