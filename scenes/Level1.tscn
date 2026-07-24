@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdxphc3fto3mj" path="res://assets/sprites/stars.png" id="1_6ovph"]
 [ext_resource type="PackedScene" uid="uid://rt54qedwhr7j" path="res://entities/player/player.tscn" id="1_bwv4p"]
+[ext_resource type="Texture2D" uid="uid://bfm6uiidgfk4d" path="res://assets/sprites/asteroid_grid.png" id="3_odhdn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwv4p"]
 texture = ExtResource("1_6ovph")
@@ -25,6 +26,35 @@ texture = ExtResource("1_6ovph")
 [sub_resource type="TileSet" id="TileSet_071fx"]
 sources/0 = SubResource("TileSetAtlasSource_bwv4p")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw26h"]
+texture = ExtResource("3_odhdn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0gyjj"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_dw26h")
+
 [node name="Level1" type="Node2D" unique_id=842708891]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1220243982]
@@ -34,3 +64,8 @@ tile_set = SubResource("TileSet_071fx")
 [node name="Player" parent="." unique_id=511396896 instance=ExtResource("1_bwv4p")]
 position = Vector2(379, 330)
 scale = Vector2(2, 2)
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1042062460]
+tile_map_data = PackedByteArray("AAAIAAgAAQAAAAEAAAAJAAgAAQABAAEAAAAKAAgAAQAAAAEAAAALAAgAAQAAAAEAAAAMAAgAAQABAAAAAAANAAgAAQAAAAEAAAAOAAgAAQABAAEAAAAPAAgAAQABAAAAAAAQAAgAAQAAAAEAAAARAAgAAQAAAAEAAAASAAgAAQAAAAAAAAATAAgAAQABAAAAAAAUAAgAAQAAAAAAAAAVAAgAAQABAAEAAAAIAAwAAQAAAAEAAAAJAAwAAQAAAAEAAAAKAAwAAQABAAEAAAALAAwAAQAAAAEAAAAMAAwAAQABAAEAAAANAAwAAQAAAAEAAAAOAAwAAQABAAEAAAAPAAwAAQABAAAAAAAQAAwAAQABAAEAAAARAAwAAQABAAEAAAASAAwAAQABAAAAAAATAAwAAQABAAAAAAAUAAwAAQABAAEAAAAVAAwAAQABAAEAAAAVAAkAAQABAAEAAAAVAAoAAQAAAAEAAAAVAAsAAQABAAAAAAAHAAgAAQABAAAAAAAHAAkAAQAAAAEAAAAHAAoAAQAAAAEAAAAHAAsAAQABAAEAAAAHAAwAAQAAAAEAAAA=")
+tile_set = SubResource("TileSet_0gyjj")
+use_kinematic_bodies = true
