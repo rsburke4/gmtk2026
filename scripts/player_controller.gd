@@ -19,8 +19,10 @@ var moving = false
 var move_queue: Array = []
 var mode: STATE = STATE.STOPPED
 var draw_from_deck = true
-@onready var move_timer: Timer = $MoveTimer
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var up_active = true
+var down_active = true
+var left_active = true
+var right_active = true
 var vis = false
 signal died
 var lost: bool
@@ -31,7 +33,40 @@ var lost: bool
 signal bump(direction: Vector2)
 var lastDirection: Vector2
 # Called when the node enters the scene tree for the first time.
+
+class Action:
+	var timer
+	var rect
+	var active
+	func _init(t,r,a):
+		timer = t
+		rect = r
+		active = a
+@onready var upAct: Action = Action.new(
+	$UpTimer,
+	$"../CooldownButtons/UpRect",
+	true
+)
+@onready var downAct: Action = Action.new(
+	$DownTimer,
+	$"../CooldownButtons/DownRect",
+	true
+)
+@onready var leftAct: Action = Action.new(
+	$LeftTimer,
+	$"../CooldownButtons/LeftRect",
+	true
+)
+@onready var rightAct: Action = Action.new(
+	$RightTimer,
+	$"../CooldownButtons/RightRect",
+	true
+)
+
 var deck_size = NUM_MOVES
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	reset()
@@ -55,32 +90,30 @@ func _physics_process(delta):
 		moving = true
 		# Rotate direction based on input vector and apply turn speed
 		direction = direction.rotated(velocity.length() * (PI/2) * TURN_SPEED * delta)
-		animated_sprite_2d.rotation = direction.angle()
+		sprite.rotation = direction.angle()
 	else:
 		moving = false
 
 	match(mode):
 		STATE.STOPPED:
 			if (up or down or left or right):
-				if(draw_from_deck):
-					draw_from_deck = false
-					var f = move_queue.pop_front()
-					move_timer.start()
-					if f == null: 
-						f = 0
-						lose()
-					var d = Vector2.ZERO
-					if(up):
-						d += Vector2(0,-1)
-					if(down):
-						d += Vector2(0,1)
-					if(left):
-						d += Vector2(-1,0)
-					if(right):
-						d += Vector2(1,0)
-					apply_force(d.normalized(),f)
-					if(d.length() > 0):
-						lastDirection = d.normalized()
+				var d = Vector2.ZERO
+				if(up and upAct.active):
+					upAct.active = false
+					d += use_direction(Vector2(0,-1),upAct)
+				if(down and downAct.active):
+					downAct.active = false
+					d += use_direction(Vector2(0,1),downAct)
+				if(left and leftAct.active):
+					leftAct.active = false
+					d += use_direction(Vector2(-1,0),leftAct)
+				if(right and rightAct.active):
+					rightAct.active = false
+					d += use_direction(Vector2(1,0),rightAct)
+				if d != Vector2(0,0):
+					velocity = d
+				if(d.length() > 0):
+					lastDirection = d.normalized()
 
 	# Apply movement velocity
 	move_and_slide()
@@ -92,8 +125,15 @@ func reset():
 	move_queue.fill(SPEED)
 	velocity = Vector2.ZERO
 
-func apply_force(dir: Vector2, force: float):
-	velocity = dir * force
+func use_direction(d,act: Action):
+	var f = move_queue.pop_front()
+	act.timer.start()
+	if f == null: 
+		f = 0
+		lose()
+		return Vector2.ZERO
+	act.rect.activate_cooldown()
+	return d * f
 
 func lose():
 	if(!lost):
@@ -103,6 +143,7 @@ func lose():
 		sprite.visible = false
 		deadTimer.start()
 		deathSound.play()
+		lost = true
 	#get_tree().quit()
 
 func win():
@@ -111,9 +152,6 @@ func win():
 	var p = get_parent() as MainScene
 	p.next_level()
 	#get_tree().quit()
-
-func _on_move_timer_timeout() -> void:
-	draw_from_deck = true
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	lose()
@@ -126,4 +164,18 @@ func _on_dead_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	bumpSound.play()
 	bump.emit(lastDirection)
-	
+
+func _on_up_timer_timeout() -> void:
+	upAct.active = true
+
+
+func _on_down_timer_timeout() -> void:
+	downAct.active = true
+
+
+func _on_right_timer_timeout() -> void:
+	rightAct.active = true
+
+
+func _on_left_timer_timeout() -> void:
+	leftAct.active = true

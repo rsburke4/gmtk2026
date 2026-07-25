@@ -59,10 +59,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "0"
 
-[node name="MoveTimer" type="Timer" parent="." unique_id=2080586502]
-wait_time = 0.5
-one_shot = true
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=426788384]
 
 [node name="DeadParticles" type="CPUParticles2D" parent="." unique_id=123941017]
@@ -103,10 +99,29 @@ shape = SubResource("RectangleShape2D_fkugw")
 stream = ExtResource("5_fkugw")
 bus = &"SFX"
 
+[node name="UpTimer" type="Timer" parent="." unique_id=2080586502]
+wait_time = 2.0
+one_shot = true
+
+[node name="DownTimer" type="Timer" parent="." unique_id=277338071]
+wait_time = 2.0
+one_shot = true
+
+[node name="RightTimer" type="Timer" parent="." unique_id=830670577]
+wait_time = 2.0
+one_shot = true
+
+[node name="LeftTimer" type="Timer" parent="." unique_id=1653690210]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="UpTimer" to="." method="_on_up_timer_timeout"]
+[connection signal="timeout" from="DownTimer" to="." method="_on_down_timer_timeout"]
+[connection signal="timeout" from="RightTimer" to="." method="_on_right_timer_timeout"]
+[connection signal="timeout" from="LeftTimer" to="." method="_on_left_timer_timeout"]
