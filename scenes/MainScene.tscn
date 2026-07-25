@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_pjux3"]
 [ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="6_o3jky"]
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
+[ext_resource type="AudioStream" uid="uid://1s0jpvcfws5j" path="res://assets/audio/jimothy1.mp3" id="8_u1u68"]
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
@@ -35,6 +36,11 @@ color = Color(1, 1, 1, 0.12941177)
 
 [node name="Player" parent="." unique_id=511396896 instance=ExtResource("2_u1u68")]
 position = Vector2(456, 144)
+
+[node name="Soundtrack" type="AudioStreamPlayer2D" parent="." unique_id=679849047]
+stream = ExtResource("8_u1u68")
+autoplay = true
+bus = &"Music"
 
 [connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
