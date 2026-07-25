@@ -26,6 +26,7 @@ signal died
 var lost: bool
 @onready var deadTimer: Timer = $DeadTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var deathSound: AudioStreamPlayer2D = $DeathSound
 # Called when the node enters the scene tree for the first time.
 var deck_size = NUM_MOVES
 # Called when the node enters the scene tree for the first time.
@@ -97,6 +98,7 @@ func lose():
 		label.visible = false
 		sprite.visible = false
 		deadTimer.start()
+		deathSound.play()
 	#get_tree().quit()
 
 func win():

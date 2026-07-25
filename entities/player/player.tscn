@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cql0l8yucnjyp" path="res://assets/sprites/jimothy.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://4p044xd7n5cc" path="res://scripts/player_controller.gd" id="2_abrql"]
 [ext_resource type="Script" uid="uid://c4bap6u7fucfx" path="res://entities/player/playerParticles.gd" id="3_sglur"]
+[ext_resource type="AudioStream" uid="uid://cmjfirc4t4hfn" path="res://assets/audio/sfx/explosionCrunch_000.ogg" id="4_bls4j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -82,6 +83,10 @@ script = ExtResource("3_sglur")
 [node name="DeadTimer" type="Timer" parent="." unique_id=2018640089]
 wait_time = 3.0
 one_shot = true
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=2005757579]
+stream = ExtResource("4_bls4j")
+bus = &"SFX"
 
 [connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
