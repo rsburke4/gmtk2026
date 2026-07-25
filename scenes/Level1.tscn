@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://rt54qedwhr7j" path="res://entities/player/player.tscn" id="1_bwv4p"]
 [ext_resource type="Texture2D" uid="uid://bfm6uiidgfk4d" path="res://assets/sprites/asteroid_grid.png" id="3_odhdn"]
 [ext_resource type="PackedScene" uid="uid://cown2rwperj6e" path="res://entities/SpaceShip.tscn" id="4_dw26h"]
+[ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_76388"]
+[ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="5_lrl65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwv4p"]
 texture = ExtResource("1_6ovph")
@@ -71,3 +73,10 @@ use_kinematic_bodies = true
 position = Vector2(456, 480)
 rotation = -1.5707964
 scale = Vector2(2, 2)
+
+[node name="PauseScreen" type="CanvasLayer" parent="." unique_id=1542046583]
+process_mode = 3
+visible = false
+script = ExtResource("5_76388")
+
+[node name="Pause" parent="PauseScreen" unique_id=1792933715 instance=ExtResource("5_lrl65")]
