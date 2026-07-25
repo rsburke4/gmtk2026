@@ -19,7 +19,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgrm8")
-backgroundAmp = 10.0
+backgroundSpeed = 0.4
+backgroundAmp = 8.0
 racoonSpeed = 0.3
 racoonAmp = 50.0
 
@@ -35,6 +36,7 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
+offset_transform_enabled = true
 texture = ExtResource("1_s4lrb")
 
 [node name="Jimothy" type="TextureRect" parent="." unique_id=2060736121]

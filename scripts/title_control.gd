@@ -17,7 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	time += delta
-	background.set_position( Vector2(sin(time * backgroundSpeed) - 10, 0) * backgroundAmp)
+	background.offset_transform_position = ( Vector2(sin(time * backgroundSpeed), 0) * backgroundAmp)
 	racoon.offset_transform_position = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
 	racoon.pivot_offset = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
 	racoon.rotation_degrees = sin(time * 3 * racoonSpeed) * 10
