@@ -100,7 +100,9 @@ func lose():
 
 func win():
 	print_debug("You WIN")
-	Globals.loadNextLevel()
+	#Globals.loadNextLevel()
+	var p = get_parent() as MainScene
+	p.next_level()
 	#get_tree().quit()
 
 func _on_move_timer_timeout() -> void:
