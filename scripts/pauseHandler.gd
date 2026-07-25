@@ -31,6 +31,7 @@ func _on_settings_back_signal() -> void:
 	visible = true
 
 func _on_title_button_button_up() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 	#returnToGame.emit()
 	#var rootNode = get_tree().root.get_child(1)
