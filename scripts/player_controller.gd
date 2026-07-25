@@ -7,27 +7,27 @@ extends CharacterBody2D
 const SPEED = 64.0
 const TURN_SPEED = 0.1
 const ROTATE_SPEED = 20
+const NUM_MOVES = 10
+@onready var label: Label = $Label
 
 var prev_pos: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.RIGHT
 var speed_modifier := 1.0
 var has_control = true
 var moving = false
+var move_queue: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	prev_pos = global_position
-	pass # Replace with function body.
+	move_queue.resize(NUM_MOVES)
+	move_queue.fill(SPEED)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func _physics_process(delta):
 	if !has_control:
 		return
 	var input_direction := Input.get_vector("move_left","move_right","move_up","move_down")
+	label.text = str(move_queue.size())
 	#var drive_input := Input.get_axis("move_up","move_down")
 	#var turn_input	:= Input.get_axis("move_left","move_right")
 
@@ -48,7 +48,11 @@ func _physics_process(delta):
 		#particle_gradient = World.get_gradient_at(position)
 		#speed_modifier = World.get_custom_data_at(position, "speed_modifier")
 		var move_speed = SPEED * speed_modifier
-		velocity = lerp(velocity, (input_direction.normalized() * input_direction.length()) * move_speed, SPEED * delta)
+		var f = move_queue.pop_front()
+		if f == null: 
+			f = 0
+		velocity = input_direction * f
+		#velocity = lerp(velocity, (input_direction.normalized() * input_direction.length()) * move_speed, SPEED * delta)
 		#if !audio_player.playing:
 			#audio_player.play()
 	#else:
