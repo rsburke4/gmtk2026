@@ -32,6 +32,7 @@ var lost: bool
 @onready var bumpSound: AudioStreamPlayer2D = $BumpSound
 signal bump(direction: Vector2)
 var lastDirection: Vector2
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 # Called when the node enters the scene tree for the first time.
 
 class Action:
@@ -114,6 +115,8 @@ func _physics_process(delta):
 					velocity = d
 				if(d.length() > 0):
 					lastDirection = d.normalized()
+					cpu_particles_2d.direction = -1 * d.normalized()
+					cpu_particles_2d.emitting = true
 
 	# Apply movement velocity
 	move_and_slide()
