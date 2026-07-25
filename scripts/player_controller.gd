@@ -85,6 +85,7 @@ func reset():
 	prev_pos = global_position
 	move_queue.resize(deck_size)
 	move_queue.fill(SPEED)
+	velocity = Vector2.ZERO
 
 func apply_force(dir: Vector2, force: float):
 	velocity = dir * force
@@ -100,7 +101,9 @@ func lose():
 
 func win():
 	print_debug("You WIN")
-	Globals.loadNextLevel()
+	#Globals.loadNextLevel()
+	var p = get_parent() as MainScene
+	p.next_level()
 	#get_tree().quit()
 
 func _on_move_timer_timeout() -> void:
