@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dv21hgsr28wty"]
 
 [ext_resource type="Script" uid="uid://bcax1sgr1exje" path="res://scripts/titleScreen/titleScreen.gd" id="1_fgkus"]
-[ext_resource type="Script" uid="uid://cu0qkdn6ubis5" path="res://scripts/titleScreen/settingsScreen.gd" id="1_sa3yf"]
+[ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="1_sa3yf"]
 
 [node name="Control" type="Control" unique_id=735362885]
 layout_mode = 3
@@ -11,56 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Settings" type="Control" parent="." unique_id=204402202 node_paths=PackedStringArray("controlNode")]
+[node name="Settings" parent="." unique_id=118220558 node_paths=PackedStringArray("controlNode") instance=ExtResource("1_sa3yf")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_sa3yf")
-controlNode = NodePath("../Title")
+controlNode = NodePath("..")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=2008234221]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.4
-anchor_right = 0.7
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CheckBox" type="CheckBox" parent="Settings/VBoxContainer" unique_id=1271947919]
-layout_mode = 2
-text = "Fullscreen"
-
-[node name="MusicLabel" type="Label" parent="Settings/VBoxContainer" unique_id=425295615]
-layout_mode = 2
-text = "Music Audio"
-
-[node name="MusicSlider" type="HSlider" parent="Settings/VBoxContainer" unique_id=559901052]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="SFXLabel" type="Label" parent="Settings/VBoxContainer" unique_id=53768361]
-layout_mode = 2
-text = "SFX Audio"
-
-[node name="SFXSlider" type="HSlider" parent="Settings/VBoxContainer" unique_id=1260616376]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="BackButton" type="Button" parent="Settings/VBoxContainer" unique_id=1697223576]
-layout_mode = 2
-text = "Back
-"
-
-[node name="Title" type="Control" parent="." unique_id=1597446114 node_paths=PackedStringArray("settingsScreen")]
+[node name="Title" type="Control" parent="." unique_id=1597446114]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,7 +23,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fgkus")
-settingsScreen = NodePath("../Settings")
 
 [node name="Label" type="Label" parent="Title" unique_id=599644473]
 layout_mode = 1
@@ -115,12 +69,9 @@ size_flags_vertical = 3
 text = "Quit
 "
 
-[connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
-[connection signal="drag_ended" from="Settings/VBoxContainer/MusicSlider" to="Settings" method="_on_music_slider_drag_ended"]
-[connection signal="value_changed" from="Settings/VBoxContainer/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
-[connection signal="drag_ended" from="Settings/VBoxContainer/SFXSlider" to="Settings" method="_on_sfx_slider_drag_ended"]
-[connection signal="value_changed" from="Settings/VBoxContainer/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]
-[connection signal="button_up" from="Settings/VBoxContainer/BackButton" to="Settings" method="_on_back_button_button_up"]
+[connection signal="backSignal" from="Settings" to="Settings" method="_on_back_signal"]
+[connection signal="backSignal" from="Settings" to="Title" method="_on_settings_back_signal"]
+[connection signal="settingsSignal" from="Title" to="Settings" method="_on_title_settings_signal"]
 [connection signal="button_up" from="Title/VBoxContainer/StartButton" to="Title" method="_on_start_button_button_up"]
 [connection signal="button_up" from="Title/VBoxContainer/SettingsButton" to="Title" method="_on_settings_button_button_up"]
 [connection signal="button_up" from="Title/VBoxContainer/QuitButton" to="Title" method="_on_quit_button_button_up"]

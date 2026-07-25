@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dq8y83661arkt"]
 
+[ext_resource type="Script" uid="uid://p1m3f082unjw" path="res://scripts/pauseHandler.gd" id="1_0ep5p"]
+
 [node name="Pause" type="Control" unique_id=1792933715]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0ep5p")
 
 [node name="Control" type="Control" parent="." unique_id=1540479034]
 layout_mode = 1
@@ -15,15 +18,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=556401948]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.12941177)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=132667010]
 layout_mode = 1
@@ -40,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="BackButton" type="Button" parent="Control/VBoxContainer" unique_id=416565964]
+[node name="ReturnButton" type="Button" parent="Control/VBoxContainer" unique_id=416565964]
 layout_mode = 2
 text = "Return"
 
@@ -58,3 +52,8 @@ layout_mode = 1
 offset_right = 175.0
 offset_bottom = 31.0
 text = "To Title"
+
+[connection signal="button_up" from="Control/VBoxContainer/ReturnButton" to="." method="_on_return_button_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/ResetButton" to="." method="_on_reset_button_button_up"]
+[connection signal="button_up" from="Control/TitleButton" to="." method="_on_title_button_button_up"]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cown2rwperj6e" path="res://entities/SpaceShip.tscn" id="4_dw26h"]
 [ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_76388"]
 [ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="5_lrl65"]
+[ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_svatc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwv4p"]
 texture = ExtResource("1_6ovph")
@@ -79,4 +80,19 @@ process_mode = 3
 visible = false
 script = ExtResource("5_76388")
 
+[node name="ColorRect" type="ColorRect" parent="PauseScreen" unique_id=2066599833]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.12941177)
+
 [node name="Pause" parent="PauseScreen" unique_id=1792933715 instance=ExtResource("5_lrl65")]
+
+[node name="Settings" parent="PauseScreen" unique_id=118220558 instance=ExtResource("7_svatc")]
+
+[connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
+[connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
+[connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
+[connection signal="backSignal" from="PauseScreen/Settings" to="PauseScreen/Pause" method="_on_settings_back_signal"]
