@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bibpil3j5pjox"]
+
+[ext_resource type="PackedScene" uid="uid://cm7p7wggqxkyh" path="res://scenes/Level.tscn" id="1_b4wyu"]
+
+[node name="Level4" unique_id=857108946 instance=ExtResource("1_b4wyu")]
+
+[node name="Marker2D" parent="." index="2" unique_id=1136134597]
+position = Vector2(296, 232)
