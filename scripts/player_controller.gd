@@ -84,7 +84,8 @@ func lose():
 
 func win():
 	print_debug("You WIN")
-	get_tree().quit()
+	Globals.loadNextLevel()
+	#get_tree().quit()
 
 func _on_move_timer_timeout() -> void:
 	draw_from_deck = true
