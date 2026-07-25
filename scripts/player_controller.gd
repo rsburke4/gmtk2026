@@ -22,8 +22,13 @@ var draw_from_deck = true
 @onready var move_timer: Timer = $MoveTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var vis = false
+signal died
+var lost: bool
+@onready var deadTimer: Timer = $DeadTimer
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lost = false
 	prev_pos = global_position
 	move_queue.resize(NUM_MOVES)
 	move_queue.fill(SPEED)
@@ -79,8 +84,13 @@ func apply_force(dir: Vector2, force: float):
 	velocity = dir * force
 
 func lose():
-	print_debug("You LOSE")
-	get_tree().quit()
+	if(!lost):
+		print_debug("You LOSE")
+		died.emit()
+		label.visible = false
+		sprite.visible = false
+		deadTimer.start()
+	#get_tree().quit()
 
 func win():
 	print_debug("You WIN")
@@ -92,3 +102,7 @@ func _on_move_timer_timeout() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	lose()
+
+
+func _on_dead_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
