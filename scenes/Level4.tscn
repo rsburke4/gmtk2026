@@ -6,3 +6,6 @@
 
 [node name="Marker2D" parent="." index="2" unique_id=1136134597]
 position = Vector2(296, 232)
+
+[node name="CameraSpawn" parent="." index="4" unique_id=1586910309]
+position = Vector2(552, 296)

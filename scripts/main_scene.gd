@@ -6,13 +6,21 @@ class_name MainScene
 @onready var level_container: Node2D = $LevelContainer
 @onready var player: Player = $Player
 @onready var camera: Camera2D = $Camera2D
-
+@onready var label: Label = $Label
+@onready var win_screen: WinScreen = $WinScreen
+var is_stopped := false
+var time_elapsed := 0.0
 var level_index = 0
 
 var current_level: Level
 
 func _ready() -> void:
 	load_level(0)
+	
+func _process(delta):
+	if !is_stopped:
+		time_elapsed += delta
+		$Label.text = str(time_elapsed).pad_decimals(2)
 
 func load_level(index: int) -> void:
 	if current_level:
@@ -32,7 +40,18 @@ func load_level(index: int) -> void:
 	if level_instance.camera_spawn_point:
 		camera.global_position = level_instance.camera_spawn_point.global_position
 		camera.set_original_position()
+	time_elapsed = 0.0
 	
 func next_level():
 	level_index += 1
 	load_level(level_index)
+
+func win():
+	win_screen.show()
+	win_screen.winSet(true)
+
+
+func _on_next_level_button_button_up() -> void:
+	win_screen.winSet(false)
+	win_screen.hide()
+	next_level()
