@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 # How fast the player moves in meters per second.
 @export var speed = 14
@@ -20,7 +21,7 @@ var mode: STATE = STATE.STOPPED
 var draw_from_deck = true
 @onready var move_timer: Timer = $MoveTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+var vis = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	prev_pos = global_position
@@ -59,6 +60,7 @@ func _physics_process(delta):
 					move_timer.start()
 					if f == null: 
 						f = 0
+						lose()
 					var d = Vector2.ZERO
 					if(up):
 						d += Vector2(0,-1)
@@ -76,6 +78,16 @@ func _physics_process(delta):
 func apply_force(dir: Vector2, force: float):
 	velocity = dir * force
 
+func lose():
+	print_debug("You LOSE")
+	get_tree().quit()
+
+func win():
+	print_debug("You WIN")
+	get_tree().quit()
 
 func _on_move_timer_timeout() -> void:
 	draw_from_deck = true
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	lose()
