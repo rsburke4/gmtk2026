@@ -33,9 +33,3 @@ func _on_settings_back_signal() -> void:
 func _on_title_button_button_up() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
-	#returnToGame.emit()
-	#var rootNode = get_tree().root.get_child(1)
-	#var title = ResourceLoader.load("res://scenes/title_screen.tscn")
-	#var titleInst = title.instantiate()
-	#get_tree().root.add_child(titleInst)
-	#rootNode.free()

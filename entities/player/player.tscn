@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://4p044xd7n5cc" path="res://scripts/player_controller.gd" id="2_abrql"]
 [ext_resource type="Script" uid="uid://c4bap6u7fucfx" path="res://entities/player/playerParticles.gd" id="3_sglur"]
 [ext_resource type="AudioStream" uid="uid://cmjfirc4t4hfn" path="res://assets/audio/sfx/explosionCrunch_000.ogg" id="4_bls4j"]
+[ext_resource type="AudioStream" uid="uid://d1tk452h2igca" path="res://assets/audio/sfx/Rock Bump.wav" id="5_fkugw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -28,11 +29,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_071fx"]
+resource_name = "CollisionShape"
 size = Vector2(31, 21)
 
 [sub_resource type="Curve" id="Curve_sglur"]
 _data = [Vector2(0.11170214, 1), 0.0, 0.0, 0, 0, Vector2(0.9361702, 0.04494381), -3.7372541, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkugw"]
+size = Vector2(33, 23)
 
 [node name="Player" type="CharacterBody2D" unique_id=1652353330]
 motion_mode = 1
@@ -88,8 +93,20 @@ one_shot = true
 stream = ExtResource("4_bls4j")
 bus = &"SFX"
 
+[node name="Area2D" type="Area2D" parent="." unique_id=839320457]
+
+[node name="TriggerShape" type="CollisionShape2D" parent="Area2D" unique_id=1184515596]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_fkugw")
+
+[node name="BumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1726702198]
+stream = ExtResource("5_fkugw")
+bus = &"SFX"
+
 [connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
