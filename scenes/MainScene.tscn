@@ -11,6 +11,36 @@
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
 [ext_resource type="PackedScene" uid="uid://c1rpqoy0ku8li" path="res://scenes/camera.tscn" id="10_cfq0f"]
 [ext_resource type="AudioStream" uid="uid://1s0jpvcfws5j" path="res://assets/audio/jimothy1.mp3" id="8_u1u68"]
+[ext_resource type="Shader" uid="uid://bidimsicv014b" path="res://scenes/cooldown.gdshader" id="12_o3jky"]
+[ext_resource type="Texture2D" uid="uid://b2rg3cb3tdu8j" path="res://assets/sprites/tile_0169.png" id="12_xnxdc"]
+[ext_resource type="Script" uid="uid://cnrpjvp1m4113" path="res://scenes/actionIcon.gd" id="13_08o8g"]
+[ext_resource type="Texture2D" uid="uid://b11lrv66igeyo" path="res://assets/sprites/tile_0168.png" id="14_0ehpd"]
+[ext_resource type="Texture2D" uid="uid://byapjwp146q16" path="res://assets/sprites/tile_0167.png" id="15_8wjpf"]
+[ext_resource type="Texture2D" uid="uid://bwn4elv32dpc0" path="res://assets/sprites/tile_0166.png" id="16_25dfr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25dfr"]
+shader = ExtResource("12_o3jky")
+shader_parameter/custom_texture = ExtResource("12_xnxdc")
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/cooldown_progress = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjvyo"]
+shader = ExtResource("12_o3jky")
+shader_parameter/custom_texture = ExtResource("14_0ehpd")
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/cooldown_progress = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2phbr"]
+shader = ExtResource("12_o3jky")
+shader_parameter/custom_texture = ExtResource("15_8wjpf")
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/cooldown_progress = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gyjj"]
+shader = ExtResource("12_o3jky")
+shader_parameter/custom_texture = ExtResource("16_25dfr")
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/cooldown_progress = 100
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
@@ -43,6 +73,44 @@ position = Vector2(456, 144)
 stream = ExtResource("8_u1u68")
 autoplay = true
 bus = &"Music"
+
+[node name="CooldownButtons" type="CanvasLayer" parent="." unique_id=666519672]
+
+[node name="LeftRect" type="ColorRect" parent="CooldownButtons" unique_id=996434809]
+material = SubResource("ShaderMaterial_25dfr")
+custom_minimum_size = Vector2(20, 20)
+offset_left = 40.0
+offset_top = 488.0
+offset_right = 80.0
+offset_bottom = 528.0
+script = ExtResource("13_08o8g")
+
+[node name="DownRect" type="ColorRect" parent="CooldownButtons" unique_id=747453624]
+material = SubResource("ShaderMaterial_kjvyo")
+custom_minimum_size = Vector2(20, 20)
+offset_left = 72.0
+offset_top = 520.0
+offset_right = 112.0
+offset_bottom = 560.0
+script = ExtResource("13_08o8g")
+
+[node name="RightRect" type="ColorRect" parent="CooldownButtons" unique_id=1234684612]
+material = SubResource("ShaderMaterial_2phbr")
+custom_minimum_size = Vector2(20, 20)
+offset_left = 104.0
+offset_top = 488.0
+offset_right = 144.0
+offset_bottom = 528.0
+script = ExtResource("13_08o8g")
+
+[node name="UpRect" type="ColorRect" parent="CooldownButtons" unique_id=1641259907]
+material = SubResource("ShaderMaterial_0gyjj")
+custom_minimum_size = Vector2(20, 20)
+offset_left = 72.0
+offset_top = 456.0
+offset_right = 112.0
+offset_bottom = 496.0
+script = ExtResource("13_08o8g")
 
 [connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
