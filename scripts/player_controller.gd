@@ -19,6 +19,7 @@ var move_queue: Array = []
 var mode: STATE = STATE.STOPPED
 var draw_from_deck = true
 @onready var move_timer: Timer = $MoveTimer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +30,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	if !has_control:
 		return
-	var input_direction := Input.get_vector("move_left","move_right","move_up","move_down")
+
 	var up := Input.is_action_just_pressed("move_up")
 	var down := Input.is_action_just_pressed("move_down")
 	var left := Input.is_action_just_pressed("move_left")
@@ -45,7 +46,7 @@ func _physics_process(delta):
 		moving = true
 		# Rotate direction based on input vector and apply turn speed
 		direction = direction.rotated(velocity.length() * (PI/2) * TURN_SPEED * delta)
-		rotation = direction.angle()
+		animated_sprite_2d.rotation = direction.angle()
 	else:
 		moving = false
 
@@ -58,14 +59,16 @@ func _physics_process(delta):
 					move_timer.start()
 					if f == null: 
 						f = 0
+					var d = Vector2.ZERO
 					if(up):
-						apply_force(Vector2(0,-1),f)
+						d += Vector2(0,-1)
 					if(down):
-						apply_force(Vector2(0,1),f)
+						d += Vector2(0,1)
 					if(left):
-						apply_force(Vector2(-1,0),f)
+						d += Vector2(-1,0)
 					if(right):
-						apply_force(Vector2(1,0),f)
+						d += Vector2(1,0)
+					apply_force(d.normalized(),f)
 
 	# Apply movement velocity
 	move_and_slide()
