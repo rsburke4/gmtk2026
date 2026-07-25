@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cokfnisa7l5x2"]
+[gd_scene format=4 uid="uid://cn0tf7q2bnr2p"]
 
 [ext_resource type="Texture2D" uid="uid://bdxphc3fto3mj" path="res://assets/sprites/stars.png" id="1_oude1"]
 [ext_resource type="PackedScene" uid="uid://rt54qedwhr7j" path="res://entities/player/player.tscn" id="2_036nt"]

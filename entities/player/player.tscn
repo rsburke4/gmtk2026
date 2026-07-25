@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cql0l8yucnjyp" path="res://assets/sprites/jimothy.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://4p044xd7n5cc" path="res://scripts/player_controller.gd" id="2_abrql"]
+[ext_resource type="Script" uid="uid://c4bap6u7fucfx" path="res://entities/player/playerParticles.gd" id="3_sglur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -27,6 +28,10 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_071fx"]
 size = Vector2(31, 21)
+
+[sub_resource type="Curve" id="Curve_sglur"]
+_data = [Vector2(0.11170214, 1), 0.0, 0.0, 0, 0, Vector2(0.9361702, 0.04494381), -3.7372541, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=1652353330]
 motion_mode = 1
@@ -54,6 +59,32 @@ one_shot = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=426788384]
 
+[node name="DeadParticles" type="CPUParticles2D" parent="." unique_id=123941017]
+emitting = false
+amount = 100
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+lifetime_randomness = 0.7
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 142.57
+angular_velocity_max = 327.92
+angle_min = -698.6
+angle_max = 470.5
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_sglur")
+script = ExtResource("3_sglur")
+
+[node name="DeadTimer" type="Timer" parent="." unique_id=2018640089]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]

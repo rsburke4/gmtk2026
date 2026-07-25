@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var level_container: Node2D = $LevelContainer
 @onready var player: Player = $Player
+@onready var camera: Camera2D = $Camera2D
 
 var current_level: Level
 
@@ -20,4 +21,6 @@ func load_level(index: int) -> void:
 
 	if level_instance.player_spawn_point:
 		player.global_position = level_instance.player_spawn_point.global_position
+		camera.global_position = level_instance.camera_spawn_point.global_position
+		camera.set_original_position()
 	
