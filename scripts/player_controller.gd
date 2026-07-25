@@ -22,11 +22,10 @@ var draw_from_deck = true
 @onready var move_timer: Timer = $MoveTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var vis = false
+var deck_size = NUM_MOVES
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	prev_pos = global_position
-	move_queue.resize(NUM_MOVES)
-	move_queue.fill(SPEED)
+	reset()
 
 func _physics_process(delta):
 	if !has_control:
@@ -74,6 +73,11 @@ func _physics_process(delta):
 
 	# Apply movement velocity
 	move_and_slide()
+
+func reset():
+	prev_pos = global_position
+	move_queue.resize(deck_size)
+	move_queue.fill(SPEED)
 
 func apply_force(dir: Vector2, force: float):
 	velocity = dir * force

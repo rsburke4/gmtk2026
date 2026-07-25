@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dj4uuop044ioa"]
+
+[ext_resource type="Script" uid="uid://dbnckflh5ni4w" path="res://scripts/main_scene.gd" id="1_x537r"]
+[ext_resource type="PackedScene" uid="uid://rt54qedwhr7j" path="res://entities/player/player.tscn" id="2_u1u68"]
+[ext_resource type="PackedScene" uid="uid://b033ym20vn086" path="res://scenes/Level1.tscn" id="2_ygjfp"]
+[ext_resource type="PackedScene" uid="uid://vfl3eq75xguc" path="res://scenes/Level2.tscn" id="3_x537r"]
+[ext_resource type="PackedScene" uid="uid://e085ao60vuq" path="res://scenes/Level3.tscn" id="4_cfq0f"]
+[ext_resource type="PackedScene" uid="uid://bibpil3j5pjox" path="res://scenes/Level4.tscn" id="5_o3jky"]
+[ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_pjux3"]
+[ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="6_o3jky"]
+[ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
+
+[node name="MainScene" type="Node2D" unique_id=842708891]
+script = ExtResource("1_x537r")
+levels = Array[PackedScene]([ExtResource("2_ygjfp"), ExtResource("3_x537r"), ExtResource("4_cfq0f"), ExtResource("5_o3jky")])
+
+[node name="PauseScreen" type="CanvasLayer" parent="." unique_id=1542046583]
+process_mode = 3
+visible = false
+script = ExtResource("5_pjux3")
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen" unique_id=2066599833]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.12941177)
+
+[node name="Pause" parent="PauseScreen" unique_id=1792933715 instance=ExtResource("6_o3jky")]
+
+[node name="Settings" parent="PauseScreen" unique_id=118220558 instance=ExtResource("7_kp0ql")]
+
+[node name="LevelContainer" type="Node2D" parent="." unique_id=1066080980]
+
+[node name="Player" parent="." unique_id=511396896 instance=ExtResource("2_u1u68")]
+position = Vector2(456, 144)
+
+[connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
+[connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
+[connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
+[connection signal="backSignal" from="PauseScreen/Settings" to="PauseScreen/Pause" method="_on_settings_back_signal"]
