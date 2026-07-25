@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c4bap6u7fucfx" path="res://entities/player/playerParticles.gd" id="3_sglur"]
 [ext_resource type="AudioStream" uid="uid://cmjfirc4t4hfn" path="res://assets/audio/sfx/explosionCrunch_000.ogg" id="4_bls4j"]
 [ext_resource type="AudioStream" uid="uid://d1tk452h2igca" path="res://assets/audio/sfx/Rock Bump.wav" id="5_fkugw"]
+[ext_resource type="Texture2D" uid="uid://yo38xy3mq3ki" path="res://assets/sprites/Food.png" id="6_8fjmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -38,6 +39,12 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkugw"]
 size = Vector2(33, 23)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qiwj3"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
 
 [node name="Player" type="CharacterBody2D" unique_id=1652353330]
 motion_mode = 1
@@ -114,6 +121,19 @@ one_shot = true
 [node name="LeftTimer" type="Timer" parent="." unique_id=1653690210]
 wait_time = 2.0
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=432642692]
+material = SubResource("CanvasItemMaterial_qiwj3")
+emitting = false
+amount = 1
+texture = ExtResource("6_8fjmc")
+lifetime = 0.5
+one_shot = true
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+anim_offset_max = 1.0
 
 [connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
