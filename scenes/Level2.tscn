@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://vfl3eq75xguc"]
+[gd_scene format=4 uid="uid://daivytosoct6"]
 
 [ext_resource type="PackedScene" uid="uid://cm7p7wggqxkyh" path="res://scenes/Level.tscn" id="1_g8psw"]
 
@@ -13,3 +13,6 @@ position = Vector2(456, 144)
 [node name="SpaceShip" parent="." index="3" unique_id=1623135886]
 position = Vector2(456, 408)
 rotation = 0.0
+
+[node name="CameraSpawn" parent="." index="4" unique_id=1586910309]
+position = Vector2(681, 251)
