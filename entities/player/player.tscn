@@ -47,3 +47,9 @@ shape = SubResource("RectangleShape2D_071fx")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "0"
+
+[node name="MoveTimer" type="Timer" parent="." unique_id=2080586502]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
