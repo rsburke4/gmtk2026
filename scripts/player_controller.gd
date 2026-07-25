@@ -28,6 +28,8 @@ var lost: bool
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var deathSound: AudioStreamPlayer2D = $DeathSound
 @onready var bumpSound: AudioStreamPlayer2D = $BumpSound
+signal bump
+var lastDirection: Vector2
 # Called when the node enters the scene tree for the first time.
 var deck_size = NUM_MOVES
 # Called when the node enters the scene tree for the first time.
@@ -77,6 +79,8 @@ func _physics_process(delta):
 					if(right):
 						d += Vector2(1,0)
 					apply_force(d.normalized(),f)
+					if(d.length() > 0):
+						lastDirection = d.normalized()
 
 	# Apply movement velocity
 	move_and_slide()
@@ -121,3 +125,5 @@ func _on_dead_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	bumpSound.play()
+	bump.emit(lastDirection)
+	

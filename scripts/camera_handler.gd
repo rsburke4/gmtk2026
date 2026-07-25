@@ -22,3 +22,8 @@ func _on_player_died() -> void:
 func set_original_position():
 	originalPosition = global_position
 	
+
+
+func _on_player_bump(extra_arg_0: Vector2) -> void:
+	global_position += extra_arg_0 * 100
+	print(extra_arg_0)

@@ -42,10 +42,8 @@ func _notification(what: int) -> void:
 	if(what == NOTIFICATION_APPLICATION_PAUSED):
 		pauseSet(true)
 
-
 func _on_pause_return_to_game() -> void:
 	pauseSet(false)
-
 
 func _on_pause_reset_signal() -> void:
 	get_tree().reload_current_scene()
