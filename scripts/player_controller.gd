@@ -28,7 +28,7 @@ var lost: bool
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var deathSound: AudioStreamPlayer2D = $DeathSound
 @onready var bumpSound: AudioStreamPlayer2D = $BumpSound
-signal bump
+signal bump(direction: Vector2)
 var lastDirection: Vector2
 # Called when the node enters the scene tree for the first time.
 var deck_size = NUM_MOVES

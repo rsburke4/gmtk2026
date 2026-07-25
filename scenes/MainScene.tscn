@@ -49,5 +49,5 @@ bus = &"Music"
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
 [connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
 [connection signal="backSignal" from="PauseScreen/Settings" to="PauseScreen/Pause" method="_on_settings_back_signal"]
-[connection signal="bump" from="Player" to="Camera2D" method="_on_player_bump" binds= [Vector2(0, 0)]]
+[connection signal="bump" from="Player" to="Camera2D" method="_on_player_bump"]
 [connection signal="died" from="Player" to="Camera2D" method="_on_player_died"]

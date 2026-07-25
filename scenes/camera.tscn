@@ -5,7 +5,12 @@
 [node name="Camera2D" type="Camera2D" unique_id=1892105697]
 script = ExtResource("1_cvpoc")
 amplitude = 10.0
+bumpAmp = 3.0
 
 [node name="ShakeTimer" type="Timer" parent="." unique_id=15924108]
 wait_time = 0.6
+one_shot = true
+
+[node name="BumpTimer" type="Timer" parent="." unique_id=1612662341]
+wait_time = 0.3
 one_shot = true
