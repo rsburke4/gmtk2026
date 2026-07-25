@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://dbnckflh5ni4w" path="res://scripts/main_scene.gd" id="1_x537r"]
 [ext_resource type="PackedScene" uid="uid://rt54qedwhr7j" path="res://entities/player/player.tscn" id="2_u1u68"]
 [ext_resource type="PackedScene" uid="uid://dj4uuop044ioa" path="res://scenes/Level1.tscn" id="2_ygjfp"]
-[ext_resource type="PackedScene" uid="uid://daivytosoct6" path="res://scenes/Level2.tscn" id="3_x537r"]
-[ext_resource type="PackedScene" uid="uid://cokfnisa7l5x2" path="res://scenes/Level3.tscn" id="4_cfq0f"]
+[ext_resource type="PackedScene" uid="uid://c46ucrav0b2ou" path="res://scenes/Level2.tscn" id="3_0cxu4"]
 [ext_resource type="PackedScene" uid="uid://bibpil3j5pjox" path="res://scenes/Level4.tscn" id="5_o3jky"]
 [ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_pjux3"]
 [ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="6_o3jky"]
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
-[ext_resource type="PackedScene" uid="uid://c1rpqoy0ku8li" path="res://scenes/camera.tscn" id="10_cfq0f"]
 [ext_resource type="AudioStream" uid="uid://1s0jpvcfws5j" path="res://assets/audio/jimothy1.mp3" id="8_u1u68"]
+[ext_resource type="PackedScene" uid="uid://c1rpqoy0ku8li" path="res://scenes/camera.tscn" id="10_cfq0f"]
 [ext_resource type="Shader" uid="uid://bidimsicv014b" path="res://scenes/cooldown.gdshader" id="12_o3jky"]
 [ext_resource type="Texture2D" uid="uid://b2rg3cb3tdu8j" path="res://assets/sprites/tile_0169.png" id="12_xnxdc"]
 [ext_resource type="Script" uid="uid://cnrpjvp1m4113" path="res://scenes/actionIcon.gd" id="13_08o8g"]
@@ -44,7 +43,7 @@ shader_parameter/cooldown_progress = 100
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
-levels = Array[PackedScene]([ExtResource("2_ygjfp"), ExtResource("3_x537r"), ExtResource("4_cfq0f"), ExtResource("5_o3jky")])
+levels = Array[PackedScene]([ExtResource("2_ygjfp"), ExtResource("3_0cxu4"), ExtResource("5_o3jky")])
 
 [node name="PauseScreen" type="CanvasLayer" parent="." unique_id=1542046583]
 process_mode = 3
@@ -69,6 +68,7 @@ color = Color(1, 1, 1, 0.12941177)
 position = Vector2(456, 144)
 
 [node name="Camera2D" parent="." unique_id=1892105697 instance=ExtResource("10_cfq0f")]
+
 [node name="Soundtrack" type="AudioStreamPlayer2D" parent="." unique_id=679849047]
 stream = ExtResource("8_u1u68")
 autoplay = true

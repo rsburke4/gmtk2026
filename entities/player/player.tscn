@@ -99,7 +99,6 @@ shape = SubResource("RectangleShape2D_fkugw")
 stream = ExtResource("5_fkugw")
 bus = &"SFX"
 
-[connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [node name="UpTimer" type="Timer" parent="." unique_id=2080586502]
 wait_time = 2.0
 one_shot = true
@@ -116,8 +115,7 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="DeadTimer" type="Timer" parent="." unique_id=956912083]
-
+[connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
