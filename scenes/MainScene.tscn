@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b11lrv66igeyo" path="res://assets/sprites/tile_0168.png" id="14_0ehpd"]
 [ext_resource type="Texture2D" uid="uid://byapjwp146q16" path="res://assets/sprites/tile_0167.png" id="15_8wjpf"]
 [ext_resource type="Texture2D" uid="uid://bwn4elv32dpc0" path="res://assets/sprites/tile_0166.png" id="16_25dfr"]
+[ext_resource type="Script" uid="uid://bxqorpe5anoif" path="res://scripts/win_screen.gd" id="18_8wjpf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25dfr"]
 shader = ExtResource("12_o3jky")
@@ -41,6 +42,10 @@ shader = ExtResource("12_o3jky")
 shader_parameter/custom_texture = ExtResource("16_25dfr")
 shader_parameter/color = Vector3(1, 1, 1)
 shader_parameter/cooldown_progress = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_8wjpf"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
@@ -113,9 +118,72 @@ offset_right = 112.0
 offset_bottom = 496.0
 script = ExtResource("13_08o8g")
 
+[node name="Label" type="Label" parent="." unique_id=1151538281]
+offset_right = 72.0
+offset_bottom = 24.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+horizontal_alignment = 2
+
+[node name="WinScreen" type="CanvasLayer" parent="." unique_id=472773290]
+process_mode = 3
+script = ExtResource("18_8wjpf")
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen" unique_id=1122931028]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.19607843)
+
+[node name="Control" type="Control" parent="WinScreen" unique_id=217058023]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/Control" unique_id=113536547]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.56
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -68.0
+offset_right = 53.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Message" type="Label" parent="WinScreen/Control/VBoxContainer" unique_id=1651260643]
+layout_mode = 2
+text = "Safety Reached!"
+label_settings = SubResource("LabelSettings_8wjpf")
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="WinScreen/Control/VBoxContainer" unique_id=941671826]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="WinScreen/Control/VBoxContainer" unique_id=945416463]
+layout_mode = 2
+text = "Next Level"
+
+[node name="TitleButton" type="Button" parent="WinScreen/Control" unique_id=15840928]
+layout_mode = 1
+offset_right = 175.0
+offset_bottom = 31.0
+text = "To Title"
+
 [connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
 [connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
 [connection signal="backSignal" from="PauseScreen/Settings" to="PauseScreen/Pause" method="_on_settings_back_signal"]
 [connection signal="bump" from="Player" to="Camera2D" method="_on_player_bump"]
 [connection signal="died" from="Player" to="Camera2D" method="_on_player_died"]
+[connection signal="button_up" from="WinScreen/Control/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_button_up"]

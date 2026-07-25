@@ -5,7 +5,7 @@ class_name Player
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
-const SPEED = 64.0
+const SPEED = 128.0
 const TURN_SPEED = 0.1
 const ROTATE_SPEED = 20
 const NUM_MOVES = 10
@@ -150,7 +150,8 @@ func win():
 	print_debug("You WIN")
 	#Globals.loadNextLevel()
 	var p = get_parent() as MainScene
-	p.next_level()
+	p.win()
+	#p.next_level()
 	#get_tree().quit()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
