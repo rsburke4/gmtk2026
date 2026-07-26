@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ftm1yl8dw8y8" path="res://scenes/Level5.tscn" id="6_25dfr"]
 [ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="6_o3jky"]
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
+[ext_resource type="PackedScene" uid="uid://dwnguimojqi2" path="res://scenes/Level6.tscn" id="8_mkg2b"]
 [ext_resource type="AudioStream" uid="uid://1s0jpvcfws5j" path="res://assets/audio/jimothy1.mp3" id="8_u1u68"]
 [ext_resource type="PackedScene" uid="uid://c1rpqoy0ku8li" path="res://scenes/camera.tscn" id="10_cfq0f"]
 [ext_resource type="Shader" uid="uid://bidimsicv014b" path="res://scenes/cooldown.gdshader" id="12_o3jky"]
@@ -21,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bwn4elv32dpc0" path="res://assets/sprites/tile_0166.png" id="16_25dfr"]
 [ext_resource type="Script" uid="uid://bxqorpe5anoif" path="res://scripts/win_screen.gd" id="18_8wjpf"]
 [ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="21_2phbr"]
+[ext_resource type="Script" uid="uid://bf8aeq80k84b4" path="res://scripts/lose_screen.gd" id="23_1ns3k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25dfr"]
 shader = ExtResource("12_o3jky")
@@ -52,7 +54,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
-levels = Array[PackedScene]([ExtResource("2_kjvyo"), ExtResource("2_ygjfp"), ExtResource("3_0cxu4"), ExtResource("4_cfq0f"), ExtResource("5_o3jky"), ExtResource("6_25dfr")])
+levels = Array[PackedScene]([ExtResource("2_kjvyo"), ExtResource("2_ygjfp"), ExtResource("3_0cxu4"), ExtResource("4_cfq0f"), ExtResource("5_o3jky"), ExtResource("6_25dfr"), ExtResource("8_mkg2b")])
 
 [node name="PauseScreen" type="CanvasLayer" parent="." unique_id=1542046583]
 process_mode = 3
@@ -65,7 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.12941177)
+color = Color(0.3019608, 0.3019608, 0.3019608, 0.78431374)
 
 [node name="Pause" parent="PauseScreen" unique_id=1792933715 instance=ExtResource("6_o3jky")]
 
@@ -138,7 +140,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3, 0.3, 0.3, 0.78431374)
+color = Color(0.3019608, 0.3019608, 0.3019608, 0.78431374)
 
 [node name="Control" type="Control" parent="WinScreen" unique_id=217058023]
 layout_mode = 3
@@ -198,12 +200,78 @@ offset_bottom = 31.0
 theme = ExtResource("21_2phbr")
 text = "To Title"
 
+[node name="LoseScreen" type="CanvasLayer" parent="." unique_id=83004154]
+process_mode = 3
+script = ExtResource("23_1ns3k")
+metadata/_custom_type_script = "uid://bxqorpe5anoif"
+
+[node name="ColorRect" type="ColorRect" parent="LoseScreen" unique_id=1815465449]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3, 0.3, 0.3, 0.78431374)
+
+[node name="Control" type="Control" parent="LoseScreen" unique_id=491653334]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen/Control" unique_id=595509494]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.56
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -68.0
+offset_right = 53.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoseScreen/Control/VBoxContainer" unique_id=788501427]
+layout_mode = 2
+theme = ExtResource("21_2phbr")
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="LoseScreen/Control/VBoxContainer" unique_id=174971971]
+layout_mode = 2
+theme = ExtResource("21_2phbr")
+text = "Safety Reached!"
+label_settings = SubResource("LabelSettings_8wjpf")
+horizontal_alignment = 1
+
+[node name="RetryLoseLevelButton" type="Button" parent="LoseScreen/Control/VBoxContainer" unique_id=928739148]
+layout_mode = 2
+theme = ExtResource("21_2phbr")
+text = "Retry Level"
+
+[node name="TitleButton" type="Button" parent="LoseScreen/Control" unique_id=1101313796]
+layout_mode = 1
+offset_right = 175.0
+offset_bottom = 31.0
+theme = ExtResource("21_2phbr")
+text = "To Title"
+
 [connection signal="resetLevelSignal" from="PauseScreen/Pause" to="." method="_on_pause_reset_level_signal"]
 [connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
 [connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
 [connection signal="backSignal" from="PauseScreen/Settings" to="PauseScreen/Pause" method="_on_settings_back_signal"]
 [connection signal="bump" from="Player" to="Camera2D" method="_on_player_bump"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="died" from="Player" to="Camera2D" method="_on_player_died"]
 [connection signal="button_up" from="WinScreen/Control/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_button_up"]
 [connection signal="button_up" from="WinScreen/Control/VBoxContainer/RetryLevelButton" to="." method="_on_retry_level_button_button_up"]
+[connection signal="button_up" from="WinScreen/Control/TitleButton" to="." method="_on_title_button_button_up"]
+[connection signal="button_up" from="LoseScreen/Control/VBoxContainer/RetryLoseLevelButton" to="." method="_on_retry_level_button_button_up"]
+[connection signal="button_up" from="LoseScreen/Control/VBoxContainer/RetryLoseLevelButton" to="." method="_on_retry_lose_level_button_button_up"]
+[connection signal="button_up" from="LoseScreen/Control/TitleButton" to="." method="_on_title_button_button_up"]

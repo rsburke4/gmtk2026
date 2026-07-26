@@ -138,7 +138,6 @@ anim_offset_max = 1.0
 [connection signal="died" from="." to="DeadParticles" method="_on_player_died"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="UpTimer" to="." method="_on_up_timer_timeout"]

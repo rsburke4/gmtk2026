@@ -66,8 +66,6 @@ class Action:
 
 var deck_size = NUM_MOVES
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	reset()
@@ -164,11 +162,6 @@ func win():
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	lose()
 
-
-func _on_dead_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
-
-
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	bumpSound.play()
 	bump.emit(lastDirection)
@@ -179,7 +172,6 @@ func _on_up_timer_timeout() -> void:
 
 func _on_down_timer_timeout() -> void:
 	downAct.active = true
-
 
 func _on_right_timer_timeout() -> void:
 	rightAct.active = true

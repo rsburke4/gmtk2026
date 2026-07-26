@@ -9,6 +9,7 @@ class_name MainScene
 @onready var label: Label = $Label
 @onready var pause_screen: PauseScreen = $PauseScreen
 @onready var win_screen: WinScreen = $WinScreen
+@onready var lose_screen: LoseScreen = $LoseScreen
 var is_stopped := false
 var time_elapsed := 0.0
 var level_index = 0
@@ -70,3 +71,17 @@ func _on_pause_reset_level_signal() -> void:
 func _on_retry_level_button_button_up() -> void:
 	reset_level()
 	win_screen.toggleWin()
+
+
+func _on_player_died() -> void:
+	lose_screen.loseSet(true)
+
+
+func _on_retry_lose_level_button_button_up() -> void:
+	reset_level()
+	lose_screen.loseSet(false)
+
+
+func _on_title_button_button_up() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
