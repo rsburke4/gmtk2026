@@ -1,5 +1,6 @@
 extends CanvasLayer
 class_name PauseScreen
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var child
 
@@ -10,8 +11,6 @@ func _ready() -> void:
 	child = get_child(0)
 	child.process_mode = Node.PROCESS_MODE_DISABLED
 	pauseSet(false)
-	pass # Replace with function body.
-
 
 func togglePause():
 	var paused = !get_tree().paused

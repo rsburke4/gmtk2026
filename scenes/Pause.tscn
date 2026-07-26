@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dq8y83661arkt"]
 
 [ext_resource type="Script" uid="uid://p1m3f082unjw" path="res://scripts/pauseHandler.gd" id="1_0ep5p"]
+[ext_resource type="AudioStream" uid="uid://cjbc7t446v2aj" path="res://assets/audio/sfx/switch15.ogg" id="2_wcpj6"]
 
 [node name="Pause" type="Control" unique_id=1792933715]
 layout_mode = 3
@@ -56,6 +57,11 @@ layout_mode = 1
 offset_right = 175.0
 offset_bottom = 31.0
 text = "To Title"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=774098413]
+process_mode = 3
+stream = ExtResource("2_wcpj6")
+bus = &"SFX"
 
 [connection signal="button_up" from="Control/VBoxContainer/ReturnButton" to="." method="_on_return_button_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/ResetLevelButton" to="." method="_on_reset_button_2_button_up"]

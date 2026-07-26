@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="1_sa3yf"]
 [ext_resource type="Texture2D" uid="uid://b47ho17ppnusc" path="res://assets/Images/Jimothy.png" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://xcioku6weti7" path="res://assets/fonts/Singsong.otf" id="6_e54dn"]
+[ext_resource type="AudioStream" uid="uid://cjbc7t446v2aj" path="res://assets/audio/sfx/switch15.ogg" id="7_3yumr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0mele"]
 font = ExtResource("6_e54dn")
@@ -109,6 +110,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Quit
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=260328204]
+process_mode = 3
+stream = ExtResource("7_3yumr")
+bus = &"SFX"
 
 [connection signal="backSignal" from="Settings" to="Settings" method="_on_back_signal"]
 [connection signal="backSignal" from="Settings" to="Title" method="_on_settings_back_signal"]

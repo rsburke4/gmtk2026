@@ -1,6 +1,7 @@
 extends Control
 
 @export var controlNode: Control
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 signal backSignal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,12 +13,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func click():
+	audio_stream_player_2d.play()
+
 func _on_back_button_button_up() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
 	backSignal.emit()
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
+	click()
 	if(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	if(not toggled_on):
@@ -34,9 +39,11 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 
 func _on_title_settings_signal() -> void:
+	click()
 	process_mode = Node.PROCESS_MODE_DISABLED
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = true
 
 func _on_pause_settings_signal() -> void:
+	click()
 	_on_title_settings_signal()
