@@ -19,7 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgrm8")
-backgroundAmp = 10.0
 racoonSpeed = 0.3
 racoonAmp = 50.0
 

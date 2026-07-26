@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://03hpvid1k3dg"]
+
+[ext_resource type="FontFile" uid="uid://xcioku6weti7" path="res://assets/fonts/Singsong.otf" id="1_r4oei"]
+[ext_resource type="Script" uid="uid://c7kxegi8125xw" path="res://scripts/winButton.gd" id="2_826fv"]
+
+[sub_resource type="Curve" id="Curve_826fv"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_afbyi"]
+font = ExtResource("1_r4oei")
+font_size = 30
+
+[node name="Node2D" type="Node2D" unique_id=607936244]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1154776179]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1678187]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect" unique_id=1405993188]
+position = Vector2(707, -42)
+amount = 100
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 1)
+angular_velocity_min = -58.4
+angular_velocity_max = 61.88
+radial_accel_min = -6.25
+radial_accel_max = 65.62
+scale_amount_min = 8.6
+scale_amount_max = 26.27
+color = Color(1, 0, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_826fv")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2016765495]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -33.0
+offset_right = 111.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You did it, Jimbo!
+You saved Christmas!
+(Just don't as me how)"
+label_settings = SubResource("LabelSettings_afbyi")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=727350613]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -110.5
+offset_top = -50.0
+offset_right = 110.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Return To Title"
+script = ExtResource("2_826fv")
+
+[connection signal="button_up" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_button_up"]

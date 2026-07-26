@@ -27,7 +27,7 @@ func load_level(index: int) -> void:
 		current_level.queue_free()
 
 	if index >= levels.size():
-		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+		get_tree().change_scene_to_file("res://scenes/win.tscn")
 		return
 	var level_instance := levels[index].instantiate() as Level
 	level_container.add_child(level_instance)
