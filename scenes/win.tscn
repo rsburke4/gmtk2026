@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://03hpvid1k3dg"]
 
 [ext_resource type="FontFile" uid="uid://xcioku6weti7" path="res://assets/fonts/Singsong.otf" id="1_r4oei"]
-[ext_resource type="Script" uid="uid://c7kxegi8125xw" path="res://scripts/winButton.gd" id="2_826fv"]
+[ext_resource type="Script" uid="uid://c1foc3gq8sah6" path="res://scripts/winButton.gd" id="2_826fv"]
+[ext_resource type="AudioStream" uid="uid://duqsix5qg87rk" path="res://assets/audio/sfx/trumpet_win.mp3" id="3_iiocm"]
 
 [sub_resource type="Curve" id="Curve_826fv"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -73,5 +74,10 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Return To Title"
 script = ExtResource("2_826fv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1390196108]
+stream = ExtResource("3_iiocm")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="button_up" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_button_up"]

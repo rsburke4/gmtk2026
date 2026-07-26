@@ -175,12 +175,17 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Next Level"
 
+[node name="RetryLevelButton" type="Button" parent="WinScreen/Control/VBoxContainer" unique_id=1297891224]
+layout_mode = 2
+text = "Retry Level"
+
 [node name="TitleButton" type="Button" parent="WinScreen/Control" unique_id=15840928]
 layout_mode = 1
 offset_right = 175.0
 offset_bottom = 31.0
 text = "To Title"
 
+[connection signal="resetLevelSignal" from="PauseScreen/Pause" to="." method="_on_pause_reset_level_signal"]
 [connection signal="resetSignal" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_reset_signal"]
 [connection signal="returnToGame" from="PauseScreen/Pause" to="PauseScreen" method="_on_pause_return_to_game"]
 [connection signal="settingsSignal" from="PauseScreen/Pause" to="PauseScreen/Settings" method="_on_pause_settings_signal"]
@@ -188,3 +193,4 @@ text = "To Title"
 [connection signal="bump" from="Player" to="Camera2D" method="_on_player_bump"]
 [connection signal="died" from="Player" to="Camera2D" method="_on_player_died"]
 [connection signal="button_up" from="WinScreen/Control/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_button_up"]
+[connection signal="button_up" from="WinScreen/Control/VBoxContainer/RetryLevelButton" to="." method="_on_retry_level_button_button_up"]

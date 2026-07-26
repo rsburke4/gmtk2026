@@ -3,6 +3,7 @@ extends Control
 signal returnToGame
 signal settingsSignal
 signal resetSignal
+signal resetLevelSignal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,3 +34,7 @@ func _on_settings_back_signal() -> void:
 func _on_title_button_button_up() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+
+func _on_reset_button_2_button_up() -> void:
+	resetLevelSignal.emit()

@@ -38,6 +38,10 @@ theme_override_constants/separation = 14
 layout_mode = 2
 text = "Return"
 
+[node name="ResetLevelButton" type="Button" parent="Control/VBoxContainer" unique_id=1190952064]
+layout_mode = 2
+text = "Reset Level"
+
 [node name="SettingsButton" type="Button" parent="Control/VBoxContainer" unique_id=953767446]
 layout_mode = 2
 text = "Settings
@@ -45,7 +49,7 @@ text = "Settings
 
 [node name="ResetButton" type="Button" parent="Control/VBoxContainer" unique_id=673456504]
 layout_mode = 2
-text = "Reset"
+text = "Restart Game"
 
 [node name="TitleButton" type="Button" parent="Control" unique_id=90165150]
 layout_mode = 1
@@ -54,6 +58,7 @@ offset_bottom = 31.0
 text = "To Title"
 
 [connection signal="button_up" from="Control/VBoxContainer/ReturnButton" to="." method="_on_return_button_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/ResetLevelButton" to="." method="_on_reset_button_2_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/ResetButton" to="." method="_on_reset_button_button_up"]
 [connection signal="button_up" from="Control/TitleButton" to="." method="_on_title_button_button_up"]

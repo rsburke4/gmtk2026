@@ -7,6 +7,7 @@ class_name MainScene
 @onready var player: Player = $Player
 @onready var camera: Camera2D = $Camera2D
 @onready var label: Label = $Label
+@onready var pause_screen: PauseScreen = $PauseScreen
 @onready var win_screen: WinScreen = $WinScreen
 var is_stopped := false
 var time_elapsed := 0.0
@@ -46,12 +47,24 @@ func next_level():
 	level_index += 1
 	load_level(level_index)
 
+func reset_level():
+	player.reset()
+	load_level(level_index)
+
 func win():
 	win_screen.show()
 	win_screen.winSet(true)
-
 
 func _on_next_level_button_button_up() -> void:
 	win_screen.winSet(false)
 	win_screen.hide()
 	next_level()
+
+func _on_pause_reset_level_signal() -> void:
+	reset_level()
+	pause_screen.togglePause()
+	
+
+func _on_retry_level_button_button_up() -> void:
+	reset_level()
+	win_screen.toggleWin()
