@@ -5,6 +5,7 @@ var level_win: bool
 @export var shakeAmplitude : float
 @onready var winTimer : Timer = $WinTimer
 @onready var rocketSound : AudioStreamPlayer2D = $RocketAudio
+@onready var emitter : CPUParticles2D = $CPUParticles2D
 
 func _process(delta: float) -> void:
 	if(level_win and !winTimer.is_stopped()):
@@ -19,4 +20,4 @@ func _on_body_entered(body: Player) -> void:
 	level_win = true
 	rocketSound.play()
 	winTimer.start()
-	
+	emitter.emitting = true

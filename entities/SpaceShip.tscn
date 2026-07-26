@@ -5,6 +5,18 @@
 [ext_resource type="AudioStream" uid="uid://634uadocaqm0" path="res://assets/audio/sfx/win.mp3" id="3_ytfqi"]
 [ext_resource type="AudioStream" uid="uid://dyaypc02mv787" path="res://assets/audio/sfx/thrusterFire_000.ogg" id="4_e45dr"]
 
+[sub_resource type="Curve" id="Curve_wm7k5"]
+_data = [Vector2(0.020040076, 1), 0.0, 0.0, 0, 0, Vector2(0.76953906, 0.39805824), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dha6e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_yq66t"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bipar"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0gyjj"]
@@ -23,6 +35,27 @@ process_mode = 3
 script = ExtResource("1_myu2c")
 launchForce = 0.1
 shakeAmplitude = 1.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=336457601]
+position = Vector2(0, 15)
+emitting = false
+amount = 20
+lifetime = 0.3
+direction = Vector2(0, 1)
+spread = 26.9
+gravity = Vector2(0, 0)
+initial_velocity_min = 114.97
+initial_velocity_max = 262.72
+angular_velocity_max = 326.25
+angle_max = 427.1
+scale_amount_min = 0.0
+scale_amount_max = 12.61
+scale_amount_curve = SubResource("Curve_wm7k5")
+color = Color(0.92638683, 0.5814396, 0.32885432, 1)
+color_ramp = SubResource("Gradient_dha6e")
+hue_variation_min = -0.11
+hue_variation_max = 0.14
+hue_variation_curve = SubResource("Curve_yq66t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960286785]
 shape = SubResource("RectangleShape2D_bipar")
