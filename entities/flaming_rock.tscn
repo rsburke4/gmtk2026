@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bkikf84q8ofiq"]
+
+[ext_resource type="Texture2D" uid="uid://c3djnjfjw02od" path="res://assets/sprites/firerock.png" id="1_3pjkg"]
+[ext_resource type="Script" uid="uid://en05ntgqf2qk" path="res://scripts/flaming_rock.gd" id="1_8j0hu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j0hu"]
+atlas = ExtResource("1_3pjkg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tobb"]
+atlas = ExtResource("1_3pjkg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_071fx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j0hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tobb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omn7y"]
+radius = 11.0
+
+[node name="FlamingRock" type="Area2D" unique_id=1025174456]
+script = ExtResource("1_8j0hu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640767198]
+sprite_frames = SubResource("SpriteFrames_071fx")
+autoplay = "default"
+frame = 1
+frame_progress = 0.13637467
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=182104788]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_omn7y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

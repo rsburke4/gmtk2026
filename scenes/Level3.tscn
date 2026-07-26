@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cokfnisa7l5x2"]
 
 [ext_resource type="PackedScene" uid="uid://cm7p7wggqxkyh" path="res://scenes/Level.tscn" id="1_m3x5m"]
+[ext_resource type="PackedScene" uid="uid://bkikf84q8ofiq" path="res://entities/flaming_rock.tscn" id="2_xsxxn"]
 
 [node name="Level3" unique_id=857108946 instance=ExtResource("1_m3x5m")]
 
@@ -16,3 +17,9 @@ rotation = 0.0
 
 [node name="CameraSpawn" parent="." index="4" unique_id=1586910309]
 position = Vector2(604, 294)
+
+[node name="Marker2D2" type="Marker2D" parent="." index="5" unique_id=274570694]
+position = Vector2(152, 104)
+
+[node name="FlamingRock" parent="Marker2D2" index="0" unique_id=1025174456 instance=ExtResource("2_xsxxn")]
+position = Vector2(232, -168)
