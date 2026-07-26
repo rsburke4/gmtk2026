@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cokfnisa7l5x2" path="res://scenes/Level3.tscn" id="4_cfq0f"]
 [ext_resource type="PackedScene" uid="uid://bibpil3j5pjox" path="res://scenes/Level4.tscn" id="5_o3jky"]
 [ext_resource type="Script" uid="uid://cb0vldj6chgn" path="res://scripts/pause_screen.gd" id="5_pjux3"]
+[ext_resource type="PackedScene" uid="uid://ftm1yl8dw8y8" path="res://scenes/Level5.tscn" id="6_25dfr"]
 [ext_resource type="PackedScene" uid="uid://dq8y83661arkt" path="res://scenes/Pause.tscn" id="6_o3jky"]
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="7_kp0ql"]
 [ext_resource type="AudioStream" uid="uid://1s0jpvcfws5j" path="res://assets/audio/jimothy1.mp3" id="8_u1u68"]
@@ -49,7 +50,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="MainScene" type="Node2D" unique_id=842708891]
 script = ExtResource("1_x537r")
-levels = Array[PackedScene]([ExtResource("2_ygjfp"), ExtResource("3_0cxu4"), ExtResource("4_cfq0f"), ExtResource("5_o3jky")])
+levels = Array[PackedScene]([ExtResource("2_ygjfp"), ExtResource("3_0cxu4"), ExtResource("4_cfq0f"), ExtResource("5_o3jky"), ExtResource("6_25dfr")])
 
 [node name="PauseScreen" type="CanvasLayer" parent="." unique_id=1542046583]
 process_mode = 3

@@ -101,16 +101,16 @@ func _physics_process(delta):
 				var d = Vector2.ZERO
 				if(up and upAct.active):
 					upAct.active = false
-					d += use_direction(Vector2(0,-1),upAct)
+					d += use_direction(Vector2(0,1),upAct)
 				if(down and downAct.active):
 					downAct.active = false
-					d += use_direction(Vector2(0,1),downAct)
+					d += use_direction(Vector2(0,-1),downAct)
 				if(left and leftAct.active):
 					leftAct.active = false
-					d += use_direction(Vector2(-1,0),leftAct)
+					d += use_direction(Vector2(1,0),leftAct)
 				if(right and rightAct.active):
 					rightAct.active = false
-					d += use_direction(Vector2(1,0),rightAct)
+					d += use_direction(Vector2(-1,0),rightAct)
 				if d != Vector2(0,0):
 					velocity = d
 				if(d.length() > 0):
