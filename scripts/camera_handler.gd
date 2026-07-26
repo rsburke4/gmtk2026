@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(!shakeTimer.is_stopped()):
 		var shakeScale = shakeTimer.time_left / shakeTimer.wait_time
 		global_position = originalPosition + amplitude * Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * shakeScale
