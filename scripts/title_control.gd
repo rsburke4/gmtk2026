@@ -16,6 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time += delta
 	background.offset_transform_position = ( Vector2(sin(time * backgroundSpeed), 0) * backgroundAmp)
-	racoon.offset_transform_position = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
-	racoon.pivot_offset = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
-	racoon.rotation_degrees = sin(time * 3 * racoonSpeed) * 10
+	#racoon.offset_transform_position = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
+	#racoon.pivot_offset = Vector2(sin(time * racoonSpeed) * racoonAmp + 101, cos(time * racoonSpeed * 0.3) * racoonAmp * 0.8)
+	var angle = (TAU * time * racoonSpeed)
+	racoon.rotation = angle #sin(time * 3 * racoonSpeed) * 10

@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bcax1sgr1exje" path="res://scripts/titleScreen/titleScreen.gd" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://bqeb062rwqmwv" path="res://scripts/title_control.gd" id="1_mgrm8"]
-[ext_resource type="Texture2D" uid="uid://c5xwu2va3dg48" path="res://assets/Images/SpaceBackground.jpg" id="1_s4lrb"]
 [ext_resource type="PackedScene" uid="uid://dm1buauq3bnba" path="res://scenes/settingsScreen.tscn" id="1_sa3yf"]
-[ext_resource type="Texture2D" uid="uid://b47ho17ppnusc" path="res://assets/Images/Jimothy.png" id="3_dc4i4"]
+[ext_resource type="Texture2D" uid="uid://cdbqhuopmded0" path="res://assets/Images/titlecard_untethered.png" id="2_3yumr"]
+[ext_resource type="Texture2D" uid="uid://17bst8dk0xw8" path="res://assets/Images/jimothy_big.png" id="3_cs5ya"]
 [ext_resource type="FontFile" uid="uid://xcioku6weti7" path="res://assets/fonts/Singsong.otf" id="6_e54dn"]
 [ext_resource type="AudioStream" uid="uid://cjbc7t446v2aj" path="res://assets/audio/sfx/switch15.ogg" id="7_3yumr"]
+[ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="7_cs5ya"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0mele"]
 font = ExtResource("6_e54dn")
@@ -20,35 +21,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgrm8")
-racoonSpeed = 0.3
+backgroundSpeed = 0.1
+backgroundAmp = 8.0
+racoonSpeed = 0.1
 racoonAmp = 50.0
 
 [node name="Background" type="TextureRect" parent="." unique_id=168998900]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -50.0
-offset_bottom = -50.0
+anchors_preset = -1
+anchor_left = -0.098958336
+anchor_top = -0.13271604
+anchor_right = 1.1232638
+anchor_bottom = 1.0895061
+offset_left = 64.0
+offset_top = 36.0
+offset_right = -192.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
 offset_transform_enabled = true
-texture = ExtResource("1_s4lrb")
+texture = ExtResource("2_3yumr")
 
 [node name="Jimothy" type="TextureRect" parent="." unique_id=2060736121]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -142.0
-offset_right = 358.0
-offset_bottom = 142.0
-grow_vertical = 2
+offset_left = 35.0
+offset_top = 347.0
+offset_right = 393.0
+offset_bottom = 631.0
+pivot_offset = Vector2(179, 142)
 offset_transform_enabled = true
-texture = ExtResource("3_dc4i4")
+texture = ExtResource("3_cs5ya")
 
 [node name="Settings" parent="." unique_id=118220558 node_paths=PackedStringArray("controlNode") instance=ExtResource("1_sa3yf")]
 layout_mode = 1
@@ -64,6 +67,7 @@ grow_vertical = 2
 script = ExtResource("1_fgkus")
 
 [node name="Label" type="Label" parent="Title" unique_id=599644473]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -97,17 +101,20 @@ theme_override_constants/separation = 20
 [node name="StartButton" type="Button" parent="Title/VBoxContainer" unique_id=949297622]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("7_cs5ya")
 text = "Play
 "
 
 [node name="SettingsButton" type="Button" parent="Title/VBoxContainer" unique_id=64309092]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("7_cs5ya")
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="Title/VBoxContainer" unique_id=1563915939]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("7_cs5ya")
 text = "Quit
 "
 

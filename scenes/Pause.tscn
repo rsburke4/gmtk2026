@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dq8y83661arkt"]
 
 [ext_resource type="Script" uid="uid://p1m3f082unjw" path="res://scripts/pauseHandler.gd" id="1_0ep5p"]
+[ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="2_8v81o"]
 [ext_resource type="AudioStream" uid="uid://cjbc7t446v2aj" path="res://assets/audio/sfx/switch15.ogg" id="2_wcpj6"]
 
 [node name="Pause" type="Control" unique_id=1792933715]
@@ -37,25 +38,30 @@ theme_override_constants/separation = 14
 
 [node name="ReturnButton" type="Button" parent="Control/VBoxContainer" unique_id=416565964]
 layout_mode = 2
+theme = ExtResource("2_8v81o")
 text = "Return"
 
 [node name="ResetLevelButton" type="Button" parent="Control/VBoxContainer" unique_id=1190952064]
 layout_mode = 2
+theme = ExtResource("2_8v81o")
 text = "Reset Level"
 
 [node name="SettingsButton" type="Button" parent="Control/VBoxContainer" unique_id=953767446]
 layout_mode = 2
+theme = ExtResource("2_8v81o")
 text = "Settings
 "
 
 [node name="ResetButton" type="Button" parent="Control/VBoxContainer" unique_id=673456504]
 layout_mode = 2
+theme = ExtResource("2_8v81o")
 text = "Restart Game"
 
 [node name="TitleButton" type="Button" parent="Control" unique_id=90165150]
 layout_mode = 1
 offset_right = 175.0
 offset_bottom = 31.0
+theme = ExtResource("2_8v81o")
 text = "To Title"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=774098413]

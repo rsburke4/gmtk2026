@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dm1buauq3bnba"]
 
 [ext_resource type="Script" uid="uid://cu0qkdn6ubis5" path="res://scripts/titleScreen/settingsScreen.gd" id="1_6rj6l"]
+[ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="2_fwpa1"]
 [ext_resource type="AudioStream" uid="uid://cjbc7t446v2aj" path="res://assets/audio/sfx/switch15.ogg" id="2_ikr4r"]
 
 [node name="Settings" type="Control" unique_id=118220558]
@@ -48,6 +49,7 @@ value = 1.0
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=4690606]
 layout_mode = 2
+theme = ExtResource("2_fwpa1")
 text = "Back
 "
 

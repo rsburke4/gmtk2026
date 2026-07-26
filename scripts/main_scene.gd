@@ -54,10 +54,12 @@ func reset_level():
 func win():
 	win_screen.show()
 	win_screen.winSet(true)
+	
 
 func _on_next_level_button_button_up() -> void:
 	win_screen.winSet(false)
 	win_screen.hide()
+	win_screen.updateTip()
 	next_level()
 
 func _on_pause_reset_level_signal() -> void:

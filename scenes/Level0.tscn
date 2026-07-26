@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://do2lknco3ppsf"]
+
+[ext_resource type="PackedScene" uid="uid://cm7p7wggqxkyh" path="res://scenes/Level.tscn" id="1_k7nap"]
+[ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="2_nkg6q"]
+
+[node name="Level0" unique_id=857108946 instance=ExtResource("1_k7nap")]
+
+[node name="Marker2D" parent="." index="2" unique_id=1136134597]
+position = Vector2(352, 480)
+
+[node name="SpaceShip" parent="." index="3" unique_id=1623135886]
+position = Vector2(864, 480)
+rotation = 0.0
+
+[node name="CameraSpawn" parent="." index="4" unique_id=1586910309]
+position = Vector2(608, 312)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="5" unique_id=1750168257]
+offset_left = 320.0
+offset_top = 48.0
+offset_right = 864.0
+offset_bottom = 320.0
+theme = ExtResource("2_nkg6q")
+text = "While on a spacewalk to collect space junk, the tether linking Jimothy to his ship broke! 
+
+Using WASD or the arrow keys, throw pieces of debris in order to propel Jimothy back to the safety of his ship. There is a short cooldown for each direction after using it. 
+
+Be careful: Jimothy has only 10 pieces of trash to throw before he is lost in space forever!"
+fit_content = true
+scroll_active = false
