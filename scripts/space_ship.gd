@@ -6,13 +6,18 @@ var level_win: bool
 @onready var winTimer : Timer = $WinTimer
 @onready var rocketSound : AudioStreamPlayer2D = $RocketAudio
 @onready var emitter : CPUParticles2D = $CPUParticles2D
+var launchActive = false
 
 func _process(delta: float) -> void:
 	if(level_win and !winTimer.is_stopped()):
+		launch()
+	if(launchActive):
 		launchForce += launchForce * delta
 		move_local_y(-launchForce)
 		move_local_x(randf_range(-1.0, 1.0) * shakeAmplitude)
-		
+
+func launch() -> void:
+	launchActive = true
 
 func _on_body_entered(body: Player) -> void:
 	audio_stream_player_2d.play()
