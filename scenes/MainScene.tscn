@@ -245,7 +245,7 @@ horizontal_alignment = 1
 [node name="Message" type="Label" parent="LoseScreen/Control/VBoxContainer" unique_id=174971971]
 layout_mode = 2
 theme = ExtResource("21_2phbr")
-text = "Safety Reached!"
+text = "Jimothy No!"
 label_settings = SubResource("LabelSettings_8wjpf")
 horizontal_alignment = 1
 
