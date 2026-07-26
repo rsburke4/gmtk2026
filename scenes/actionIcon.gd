@@ -3,7 +3,6 @@ class_name ActionIcon
 
 var cooldown_active := false
 var cooldown_percent := 0
-var cooldown_timer := 4
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -14,13 +13,13 @@ func _process(_delta: float) -> void:
 	material.set_shader_parameter("cooldown_progress",cooldown_percent)
 	pass
 
-func activate_cooldown():
+func activate_cooldown(duration):
 	if cooldown_active: return
 	print("Activated cooldown")
 	cooldown_active = true
 	cooldown_percent = 0
 	var tween := create_tween()
-	tween.tween_property(self, "cooldown_percent", 100, cooldown_timer).from(0)
+	tween.tween_property(self, "cooldown_percent", 100, duration).from(0)
 	tween.finished.connect(on_cooldown_finished)
 	
 func on_cooldown_finished():

@@ -10,7 +10,7 @@ var tipList: Array[String] = [
 	"Tip: You don't need to wait until Jimothy reaches a rock to throw more trash.",
 	"Tip: If Jimothy flies off the screen, he will be lost in space!",
 	"Tip: Hazards can move at different speeds. Don't forget to watch the timing of both cooldowns and hazards!",
-	"Tip: There are multiple solutions to each level. See how quickly you can get to the ship!s"
+	"Tip: There are multiple solutions to each level. See how quickly you can get to the ship!"
 ]
 var tipIdx = 0
 

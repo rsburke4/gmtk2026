@@ -135,7 +135,7 @@ func use_direction(d,act: Action):
 		f = 0
 		lose()
 		return Vector2.ZERO
-	act.rect.activate_cooldown()
+	act.rect.activate_cooldown(act.timer.wait_time)
 	return d * f
 
 func lose():
