@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://03hpvid1k3dg"]
 
 [ext_resource type="FontFile" uid="uid://xcioku6weti7" path="res://assets/fonts/Singsong.otf" id="1_r4oei"]
+[ext_resource type="Texture2D" uid="uid://csrjv0lqq5tk4" path="res://assets/Images/endcard.png" id="1_tylv2"]
 [ext_resource type="Script" uid="uid://c1foc3gq8sah6" path="res://scripts/winButton.gd" id="2_826fv"]
+[ext_resource type="Theme" uid="uid://dy5b3l8445w1w" path="res://assets/themes/default.tres" id="3_5vxan"]
 [ext_resource type="AudioStream" uid="uid://duqsix5qg87rk" path="res://assets/audio/sfx/trumpet_win.mp3" id="3_iiocm"]
 
 [sub_resource type="Curve" id="Curve_826fv"]
@@ -17,13 +19,21 @@ font_size = 30
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1154776179]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=54780674]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tylv2")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1678187]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect" unique_id=1405993188]
 position = Vector2(707, -42)
@@ -43,6 +53,7 @@ hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_826fv")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=2016765495]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -71,6 +82,7 @@ offset_top = -50.0
 offset_right = 110.5
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_5vxan")
 theme_override_font_sizes/font_size = 30
 text = "Return To Title"
 script = ExtResource("2_826fv")
