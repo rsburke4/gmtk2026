@@ -127,6 +127,8 @@ func reset():
 	move_queue.resize(deck_size)
 	move_queue.fill(SPEED)
 	velocity = Vector2.ZERO
+	label.visible = true
+	sprite.visible = true
 
 func use_direction(d,act: Action):
 	var f = move_queue.pop_front()
@@ -154,6 +156,8 @@ func win():
 	#Globals.loadNextLevel()
 	var p = get_parent() as MainScene
 	p.win()
+	label.visible = false
+	sprite.visible = false
 	#p.next_level()
 	#get_tree().quit()
 
